@@ -19,10 +19,10 @@
             height: 100%;
             width: 100%;
             overflow: hidden;
+            background-color: #0a192f;
         }
         body {
             font-family: 'Noto Sans KR', sans-serif;
-            background-color: #0a192f;
             color: #e6f1ff;
         }
         #app-wrapper {
@@ -105,20 +105,68 @@
         .rank-slot.empty:hover {
             background-color: #334155; /* slate-700 */
         }
+        /* 단어 잘림 방지 스타일 */
+        .keep-all {
+            word-break: keep-all;
+        }
     </style>
 </head>
 <body class="p-2 sm:p-4">
 
+    <!-- Fullscreen Button -->
+    <button id="fullscreen-btn" class="fixed top-4 right-4 z-50 p-2 bg-slate-700/50 hover:bg-slate-600/70 rounded-full text-white transition">
+        <svg id="fs-enter-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8"/><path d="M3 16.2V21m0 0h4.8M3 21l6-6"/><path d="M21 7.8V3m0 0h-4.8M21 3l-6 6"/><path d="M3 7.8V3m0 0h4.8M3 3l6 6"/></svg>
+        <svg id="fs-exit-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="m15 15 6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 16.2V21m0 0H4.2M9 21l-6-6"/><path d="M15 7.8V3m0 0h4.8M15 3l6 6"/><path d="M9 7.8V3m0 0H4.2M9 3l-6 6"/></svg>
+    </button>
+
     <div id="app-wrapper">
         <div id="app-container" class="w-full max-w-7xl mx-auto bg-[#172a46] bg-opacity-80 backdrop-blur-sm rounded-2xl shadow-2xl p-4 sm:p-6 md:p-8">
 
-            <!-- Screen 1: Intro -->
-            <div id="intro-screen" class="screen active-screen text-center">
-                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">달에서 길을 잃다 (모둠 활동용)</h1>
-                <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-6 max-w-3xl mx-auto">
-                    당신이 탄 우주선이 달에 불시착했습니다.<br>
-                    살아남기 위해, 약 300km 떨어진 구조선까지 가야 합니다.<br>
-                    먼저 개인의 생각으로, 이후 모둠원과 토의하여 15개 물품의 생존 우선순위를 정해보세요!
+            <!-- Screen 0: Welcome Screen -->
+            <div id="welcome-screen" class="screen active-screen text-center">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">달에서 길을 잃다</h1>
+                <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-3xl mx-auto keep-all">
+                    달에서 살아남기 위한 모둠 협동 학습에 오신 것을 환영합니다.
+                </p>
+
+                <div class="max-w-3xl mx-auto text-left bg-slate-800/50 p-6 rounded-lg mb-8 space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-3">수업 목표</h2>
+                        <p class="keep-all text-slate-300">
+                            주어진 정보(전문 지식)를 바탕으로 합리적인 의사 결정을 내리는 과정을 체험하고, 모둠원과의 토의를 통해 최선의 결과를 도출하는 협업 능력을 기릅니다.
+                        </p>
+                    </div>
+                    <div>
+                        <h2 class="text-2xl font-bold text-cyan-300 mb-3">수업 활동 안내</h2>
+                        <div class="space-y-3 text-slate-300">
+                            <p class="keep-all"><b>[활동 1] 개인별 의견 마련:</b> 모둠과 이름을 입력하고 전문 분야를 선택합니다. 각자 얻은 전문 지식을 바탕으로 생존에 필요한 물품 순위를 정합니다.</p>
+                            <p class="keep-all"><b>[활동 2] 모둠별 의견 조율:</b> 모둠원들과 각자의 순위와 근거를 공유하며 토의합니다. 토의를 통해 우리 모둠의 최종 순위를 결정합니다.</p>
+                            <p class="keep-all"><b>[결과 확인]</b> 개인 순위와 모둠 순위를 NASA 전문가의 답과 비교하며, 더 나은 의사결정 과정을 되돌아봅니다.</p>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-yellow-300 mb-2">꼭 읽어주세요!</h3>
+                        <p class="text-slate-400 keep-all">모둠원은 각자 다른 전문 분야를 선택해야 협동의 효과가 커집니다. 자신의 의견만 고집하기보다, 다른 모둠원의 전문 지식을 존중하고 경청하며 합리적인 결정을 내려보세요.</p>
+                    </div>
+                </div>
+
+                <button id="start-class-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                    수업 시작하기
+                </button>
+
+                <div class="mt-8 border-t border-slate-700 pt-6">
+                     <p class="text-slate-400 mb-2">※ 이 활동은 모둠 수업용입니다.</p>
+                    <a href="https://moon-survival.pages.dev/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 underline">
+                        개인 활동 버전으로 체험하기
+                    </a>
+                </div>
+            </div>
+
+            <!-- Screen 1: Setup Screen -->
+            <div id="setup-screen" class="screen text-center">
+                <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">모둠 정보 입력</h1>
+                 <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto keep-all">
+                    모둠과 당신의 정보를 입력해주세요.
                 </p>
                 <div class="max-w-sm mx-auto mb-8 space-y-4">
                     <div>
@@ -136,41 +184,35 @@
                         <input type="text" id="studentNameInput" class="bg-slate-700 border border-slate-600 text-white text-sm rounded-lg focus:ring-orange-500 focus:border-orange-500 block w-full p-2.5" placeholder="예) 홍길동" required>
                     </div>
                 </div>
-                <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <button id="start-mission-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
-                        모둠 미션 시작
-                    </button>
-                    <a href="https://moon-survival.pages.dev" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto bg-sky-600 hover:bg-sky-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
-                        개인 활동 바로가기
-                    </a>
-                </div>
-                <p class="text-xs text-slate-500 mt-8">made by.핑키네</p>
+                <button id="start-mission-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                    미션 시작
+                </button>
             </div>
             
             <!-- Screen 2: Role Selection -->
             <div id="role-screen" class="screen">
                 <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">당신의 전문 분야를 선택하세요</h2>
-                <p class="text-center text-slate-300 mb-8">선택한 역할에 따라 특별한 전문 지식을 얻게 됩니다.</p>
+                <p class="text-center text-slate-300 mb-8 keep-all">선택한 역할에 따라 특별한 전문 지식을 얻게 됩니다.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     <div data-role="scientist" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🔬</div>
                         <h3 class="text-xl sm:text-2xl font-bold">우주과학자</h3>
-                        <p class="text-slate-400 text-sm sm:text-base">달의 환경과 물리 법칙에 대해 깊이 이해하고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base keep-all">달의 환경과 물리 법칙에 대해 깊이 이해하고 있습니다.</p>
                     </div>
                     <div data-role="explorer" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🧭</div>
                         <h3 class="text-xl sm:text-2xl font-bold">탐험가</h3>
-                        <p class="text-slate-400 text-sm sm:text-base">험난한 지형을 돌파하고 길을 찾는 데 능숙합니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base keep-all">험난한 지형을 돌파하고 길을 찾는 데 능숙합니다.</p>
                     </div>
                     <div data-role="communicator" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">📡</div>
                         <h3 class="text-xl sm:text-2xl font-bold">통신전문가</h3>
-                        <p class="text-slate-400 text-sm sm:text-base">장비를 활용해 구조 신호를 보내는 방법을 알고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base keep-all">장비를 활용해 구조 신호를 보내는 방법을 알고 있습니다.</p>
                     </div>
                     <div data-role="medic" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🩺</div>
                         <h3 class="text-xl sm:text-2xl font-bold">의료진</h3>
-                        <p class="text-slate-400 text-sm sm:text-base">극한 상황에서 생명을 유지하는 방법을 알고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base keep-all">극한 상황에서 생명을 유지하는 방법을 알고 있습니다.</p>
                     </div>
                 </div>
             </div>
@@ -179,7 +221,7 @@
             <div id="knowledge-screen" class="screen">
                 <h2 class="text-2xl sm:text-3xl font-bold text-center mb-2">전문 지식 브리핑</h2>
                 <p id="role-title" class="text-center text-orange-400 font-bold text-lg mb-6"></p>
-                <div id="knowledge-list" class="bg-slate-800 p-4 sm:p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-300 max-h-[60vh] overflow-y-auto">
+                <div id="knowledge-list" class="bg-slate-800 p-4 sm:p-6 rounded-lg grid grid-cols-1 md:grid-cols-2 gap-4 text-slate-300 max-h-[65vh] overflow-y-auto">
                     <!-- Knowledge items will be injected here by JS -->
                 </div>
                 <div class="text-center mt-8">
@@ -207,17 +249,6 @@
                  </div>
             </div>
             
-            <!-- Screen 4.5: Transition Screen -->
-            <div id="transition-screen" class="screen text-center">
-                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">개인 순위 저장 완료!</h2>
-                <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
-                    이제 모둠원들과 함께 토의하여<br>모둠의 최종 생존 물품 순위를 결정해주세요.
-                </p>
-                <button id="go-to-group-ranking-btn" class="bg-cyan-600 hover:bg-cyan-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
-                    모둠 순위 정하기 시작
-                </button>
-            </div>
-
             <!-- Screen 5: Group Ranking Activity -->
             <div id="group-ranking-screen" class="screen">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
@@ -249,16 +280,16 @@
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Individual Report -->
-                        <div class="bg-slate-900/50 p-4 rounded-lg">
+                        <div class="bg-slate-900/50 p-4 rounded-lg flex flex-col">
                             <h3 class="text-xl font-bold text-center mb-4 text-yellow-300">나의 생존 계획</h3>
                             <div id="individual-score-summary" class="text-center mb-4"></div>
-                            <div id="individual-final-list" class="space-y-2 max-h-[45vh] overflow-y-auto bg-slate-800 p-3 rounded-md"></div>
+                            <div id="individual-final-list" class="space-y-2 flex-grow overflow-y-auto bg-slate-800 p-3 rounded-md max-h-[50vh] lg:max-h-[45vh]"></div>
                         </div>
                         <!-- Group Report -->
-                         <div class="bg-slate-900/50 p-4 rounded-lg">
+                         <div class="bg-slate-900/50 p-4 rounded-lg flex flex-col">
                             <h3 class="text-xl font-bold text-center mb-4 text-teal-300">우리 모둠의 생존 계획</h3>
                             <div id="group-score-summary" class="text-center mb-4"></div>
-                            <div id="group-final-list" class="space-y-2 max-h-[45vh] overflow-y-auto bg-slate-800 p-3 rounded-md"></div>
+                            <div id="group-final-list" class="space-y-2 flex-grow overflow-y-auto bg-slate-800 p-3 rounded-md max-h-[50vh] lg:max-h-[45vh]"></div>
                         </div>
                     </div>
                 </div>
@@ -339,16 +370,22 @@
             <div id="alert-confirm-buttons" class="flex justify-center gap-4"></div>
         </div>
     </div>
+    
+    <audio id="bg-music" loop></audio>
 
     <script>
     (function() {
+        // --- App State and Data ---
+        const SAVE_KEY = 'pinky-moon-survival-team-v1.4';
+        const APP_VERSION = 'team-1.4';
+
         let emergencySequenceTimeoutId = null;
-        let activeSelectionContext = { type: null, slotIndex: null }; // 'individual' or 'group'
+        let activeSelectionContext = { type: null, slotIndex: null };
         
         const appData = {
             emergencyMessages: [
-                "치직... 치지직...", "여기는 통제실, 응답하라 아르테미스 1호!", "알 수 없는 충격으로 선체 손상 확인.",
-                "현재 위치를 특정할 수 없음.", "대원, 당신의 판단에 모두의 생존이 달려있다.", "구조선까지는 약 300km.",
+                "치직... 치지직...", "여기는 통제실, 응답하라 '{groupName}' 1호!", "알 수 없는 충격으로 선체 손상 확인.",
+                "현재 위치를 특정할 수 없음.", "{name} 대원, 당신의 판단에 모두의 생존이 달려있다.", "구조선까지는 약 300km.",
                 "전문지식을 활용해, 15개 비상 물품의 생존 순위를 정해라.", "반드시... 반드시 살아남아라!"
             ],
             roles: {
@@ -415,18 +452,69 @@
             groupFinalList: document.getElementById('group-final-list'),
             backToStartBtn: document.getElementById('back-to-start-btn'),
             exitAppBtn: document.getElementById('exit-app-btn'),
+            fullscreenBtn: document.getElementById('fullscreen-btn'),
+            fsEnterIcon: document.getElementById('fs-enter-icon'),
+            fsExitIcon: document.getElementById('fs-exit-icon'),
+            bgMusic: document.getElementById('bg-music'),
         };
-
-        const SAVE_KEY = 'pinky-moon-survival-team-v1.0';
         
-        const resetState = () => {
-             appData.state = {
-                currentScreen: 'intro-screen', groupName: '', studentName: '', studentNumber: '', selectedRole: null,
-                rankedItems: Array(15).fill(null),
-                groupRankedItems: Array(15).fill(null),
-             };
+        // --- All Functions Defined Here ---
+        const saveState = () => {
+            try {
+                if (appData.state.currentScreen === 'welcome-screen' || appData.state.currentScreen === 'setup-screen' || appData.state.currentScreen === 'emergency-screen') return;
+
+                const saveReasons = (type) => {
+                    const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
+                    const listEl = type === 'individual' ? dom.rankListEl : dom.groupRankListEl;
+                    const reasonAttribute = type === 'individual' ? 'data-reason-for-item' : 'data-reason-for-group-item';
+
+                    rankedItems.forEach((itemData, index) => {
+                        if (itemData) {
+                            const textarea = listEl.querySelector(`textarea[${reasonAttribute}="${itemData.id}"]`);
+                            if (textarea) rankedItems[index].reason = textarea.value;
+                        }
+                    });
+                };
+                
+                if(appData.state.currentScreen === 'main-screen') saveReasons('individual');
+                if(appData.state.currentScreen === 'group-ranking-screen') saveReasons('group');
+
+                localStorage.setItem(SAVE_KEY, JSON.stringify({ ...appData.state, version: APP_VERSION }));
+            } catch (e) { console.error("저장 중 오류:", e); }
         };
 
+        const autoSave = () => saveState();
+        
+        const getNewState = () => ({
+            currentScreen: 'setup-screen',
+            groupName: '', studentName: '', studentNumber: '',
+            selectedRole: null,
+            rankedItems: Array(15).fill(null),
+            groupRankedItems: Array(15).fill(null),
+        });
+
+        const showScreen = (screenId) => {
+            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
+            dom.emergencyScreen.style.display = 'none';
+
+            const activeScreen = document.getElementById(screenId);
+            if (screenId === 'emergency-screen') {
+                dom.emergencyScreen.style.display = 'flex';
+                [dom.backToStartBtn, dom.exitAppBtn].forEach(btn => btn.classList.add('hidden'));
+            } else if (activeScreen) {
+                activeScreen.classList.add('active-screen');
+                const isIntro = screenId === 'welcome-screen' || screenId === 'setup-screen';
+                [dom.backToStartBtn, dom.exitAppBtn].forEach(btn => btn.classList.toggle('hidden', isIntro));
+            }
+            appData.state.currentScreen = screenId;
+            if (screenId !== 'welcome-screen' && screenId !== 'setup-screen' && screenId !== 'emergency-screen') saveState();
+        };
+
+        const restartApp = () => {
+            localStorage.removeItem(SAVE_KEY);
+            window.location.reload();
+        };
+        
         const openModal = (modalEl) => modalEl.classList.add('show');
         const closeModal = (modalEl) => modalEl.classList.remove('show');
 
@@ -437,69 +525,45 @@
             openModal(dom.alertConfirmModalEl);
         };
 
-        const showConfirm = (message, onConfirm, title = '확인') => {
+        const showConfirm = (message, onConfirm, title = '확인', options = {}) => {
+            const {
+                onCancel = () => {},
+                okText = '확인',
+                cancelText = '취소',
+                okClass = 'bg-red-600 hover:bg-red-700',
+                cancelClass = 'bg-gray-500 hover:bg-gray-600'
+            } = options;
+
             dom.alertConfirmTitle.textContent = title;
             dom.alertConfirmMessage.textContent = message;
             dom.alertConfirmButtons.innerHTML = `
-                <button class="modal-cancel-btn bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-6 rounded-lg">취소</button>
-                <button class="modal-ok-btn bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-6 rounded-lg">확인</button>
+                <button class="modal-cancel-btn ${cancelClass} text-white font-bold py-2 px-6 rounded-lg">${cancelText}</button>
+                <button class="modal-ok-btn ${okClass} text-white font-bold py-2 px-6 rounded-lg">${okText}</button>
             `;
             openModal(dom.alertConfirmModalEl);
+            
             dom.alertConfirmModalEl.querySelector('.modal-ok-btn').onclick = () => { closeModal(dom.alertConfirmModalEl); onConfirm(); };
-        };
-        
-        const showEmergencySequence = () => {
-            showScreen('emergency-screen');
-            dom.emergencyMessageContainer.innerHTML = '';
-            dom.proceedToRolesBtn.classList.add('hidden');
-            dom.skipEmergencyBtn.classList.remove('hidden');
-
-            let messageIndex = 0;
-            const showNextMessage = () => {
-                if (emergencySequenceTimeoutId) clearTimeout(emergencySequenceTimeoutId);
-                if (messageIndex >= appData.emergencyMessages.length) {
-                    dom.skipEmergencyBtn.classList.add('hidden');
-                    dom.proceedToRolesBtn.classList.remove('hidden');
-                    return;
-                }
-                const p = document.createElement('p');
-                p.textContent = appData.emergencyMessages[messageIndex];
-                dom.emergencyMessageContainer.appendChild(p);
-                messageIndex++;
-                emergencySequenceTimeoutId = setTimeout(showNextMessage, 2200);
-            };
-            showNextMessage();
-        };
-        
-        const skipEmergencySequence = () => {
-            if (emergencySequenceTimeoutId) clearTimeout(emergencySequenceTimeoutId);
-            dom.emergencyMessageContainer.innerHTML = appData.emergencyMessages
-                .map(msg => `<p style="animation: none; opacity: 1;">${msg}</p>`).join('');
-            dom.skipEmergencyBtn.classList.add('hidden');
-            dom.proceedToRolesBtn.classList.remove('hidden');
+            dom.alertConfirmModalEl.querySelector('.modal-cancel-btn').onclick = () => { closeModal(dom.alertConfirmModalEl); onCancel(); };
         };
 
-        const showScreen = (screenId) => {
-            document.querySelectorAll('.screen').forEach(s => s.classList.remove('active-screen'));
-            dom.emergencyScreen.style.display = 'none';
-
-            const activeScreen = document.getElementById(screenId);
-            if (screenId === 'emergency-screen') {
-                dom.emergencyScreen.style.display = 'flex';
-                dom.backToStartBtn.classList.add('hidden');
-                dom.exitAppBtn.classList.add('hidden');
-            } else if (activeScreen) {
-                activeScreen.classList.add('active-screen');
-                if (screenId === 'intro-screen') {
-                    dom.backToStartBtn.classList.add('hidden');
-                    dom.exitAppBtn.classList.add('hidden');
-                } else {
-                    dom.backToStartBtn.classList.remove('hidden');
-                    dom.exitAppBtn.classList.remove('hidden');
-                }
+        const updateFullscreenIcons = () => {
+            if (document.fullscreenElement) {
+                dom.fsEnterIcon.classList.add('hidden');
+                dom.fsExitIcon.classList.remove('hidden');
+            } else {
+                dom.fsEnterIcon.classList.remove('hidden');
+                dom.fsExitIcon.classList.add('hidden');
             }
-            appData.state.currentScreen = screenId;
-            if (screenId !== 'intro-screen' && screenId !== 'emergency-screen') autoSave();
+        };
+
+        const toggleFullScreen = () => {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    showAlert(`전체화면 모드를 시작할 수 없습니다: ${err.message}`);
+                });
+            } else if (document.exitFullscreen) {
+                document.exitFullscreen();
+            }
         };
 
         const startMission = () => {
@@ -513,41 +577,71 @@
             saveState();
             showEmergencySequence();
         };
+        
+        const showEmergencySequence = () => {
+            showScreen('emergency-screen');
+            dom.emergencyMessageContainer.innerHTML = '';
+            dom.proceedToRolesBtn.classList.add('hidden');
+            dom.skipEmergencyBtn.classList.remove('hidden');
+            if (dom.bgMusic) {
+                dom.bgMusic.src = 'u are in danger.mp3'; // 음악 파일 경로
+                dom.bgMusic.play().catch(e => console.log("음악 자동 재생이 차단되었습니다.", e));
+            }
+
+            let messageIndex = 0;
+            const showNextMessage = () => {
+                if (emergencySequenceTimeoutId) clearTimeout(emergencySequenceTimeoutId);
+                if (messageIndex >= appData.emergencyMessages.length) {
+                    dom.skipEmergencyBtn.classList.add('hidden');
+                    dom.proceedToRolesBtn.classList.remove('hidden');
+                    return;
+                }
+                const p = document.createElement('p');
+                p.className = 'keep-all';
+                const rawMessage = appData.emergencyMessages[messageIndex];
+                const studentName = appData.state.studentName || '대원';
+                const groupName = appData.state.groupName || '모둠';
+                p.textContent = rawMessage.replace('{name}', studentName).replace('{groupName}', groupName);
+                dom.emergencyMessageContainer.appendChild(p);
+                messageIndex++;
+                emergencySequenceTimeoutId = setTimeout(showNextMessage, 2200);
+            };
+            showNextMessage();
+        };
+        
+        const stopMusicAndClear = () => {
+            if (dom.bgMusic) {
+                dom.bgMusic.pause();
+                dom.bgMusic.currentTime = 0;
+            }
+        };
+
+        const skipEmergencySequence = () => {
+            if (emergencySequenceTimeoutId) clearTimeout(emergencySequenceTimeoutId);
+            const studentName = appData.state.studentName || '대원';
+            const groupName = appData.state.groupName || '모둠';
+            dom.emergencyMessageContainer.innerHTML = appData.emergencyMessages
+                .map(msg => `<p style="animation: none; opacity: 1;" class="keep-all">${msg.replace('{name}', studentName).replace('{groupName}', groupName)}</p>`).join('');
+            dom.skipEmergencyBtn.classList.add('hidden');
+            dom.proceedToRolesBtn.classList.remove('hidden');
+        };
 
         const selectRole = (roleId) => {
             appData.state.selectedRole = roleId;
             const role = appData.roles[roleId];
             dom.roleTitle.innerText = `[${role.name}]`;
-            dom.knowledgeList.innerHTML = ''; 
-
-            const roleKnowledgeTitle = document.createElement('h4');
-            roleKnowledgeTitle.className = "text-lg font-bold text-orange-300 mt-4 md:col-span-2";
-            roleKnowledgeTitle.textContent = "🚀 전문 지식";
-            dom.knowledgeList.appendChild(roleKnowledgeTitle);
-
-            role.knowledge.forEach(fact => {
-                const li = document.createElement('div');
-                li.className = "bg-slate-700 p-3 rounded";
-                li.textContent = `- ${fact.text}`;
-                dom.knowledgeList.appendChild(li);
-            });
-
-            const separator = document.createElement('hr');
-            separator.className = "border-slate-600 my-4 md:col-span-2";
-            dom.knowledgeList.appendChild(separator);
-
-            const itemInfoTitle = document.createElement('h4');
-            itemInfoTitle.className = "text-lg font-bold text-cyan-300 md:col-span-2";
-            itemInfoTitle.textContent = "🎒 물품 정보";
-            dom.knowledgeList.appendChild(itemInfoTitle);
-
-            appData.items.forEach(item => {
-                const itemInfoEl = document.createElement('div');
-                itemInfoEl.className = "bg-slate-700 p-3 rounded";
-                itemInfoEl.innerHTML = `<p class="font-bold">${item.icon} ${item.name}</p><p class="text-sm text-slate-400 mt-1">${item.description}</p>`;
-                dom.knowledgeList.appendChild(itemInfoEl);
-            });
-
+            dom.knowledgeList.innerHTML = `
+                <h4 class="text-lg font-bold text-orange-300 md:col-span-2">🚀 전문 지식</h4>
+                ${role.knowledge.map(fact => `<div class="bg-slate-700 p-3 rounded keep-all">- ${fact.text}</div>`).join('')}
+                <hr class="border-slate-600 my-2 md:col-span-2">
+                <h4 class="text-lg font-bold text-cyan-300 md:col-span-2">🎒 물품 정보</h4>
+                ${appData.items.map(item => `
+                    <div class="bg-slate-700 p-3 rounded">
+                        <p class="font-bold">${item.icon} ${item.name}</p>
+                        <p class="text-sm text-slate-400 mt-1 keep-all">${item.description}</p>
+                    </div>
+                `).join('')}
+            `;
             showScreen('knowledge-screen');
         };
         
@@ -602,68 +696,49 @@
             const rankedItemIds = new Set( (type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems).filter(Boolean).map(item => item.id) );
             const availableItems = appData.items.filter(item => !rankedItemIds.has(item.id));
             
-            dom.itemSelectionModalBodyEl.innerHTML = '';
-            if (availableItems.length === 0) {
-                dom.itemSelectionModalBodyEl.innerHTML = `<p class="text-center text-slate-400 col-span-full">모든 물품이 선택되었습니다.</p>`;
-            } else {
-                availableItems.forEach(item => {
-                    const itemEl = document.createElement('button');
-                    itemEl.className = 'p-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left transition';
-                    itemEl.dataset.itemId = item.id;
-                    itemEl.innerHTML = `<p class="font-bold text-lg">${item.icon} ${item.name}</p>`;
-                    itemEl.onclick = () => {
-                        const rankedItems = activeSelectionContext.type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
-                        rankedItems[activeSelectionContext.slotIndex] = { id: item.id, reason: '' };
-                        closeModal(dom.itemSelectionModalEl);
-                        renderRankingSlots(activeSelectionContext.type);
-                        autoSave();
-                    };
-                    dom.itemSelectionModalBodyEl.appendChild(itemEl);
-                });
-            }
+            dom.itemSelectionModalBodyEl.innerHTML = availableItems.length ? 
+                availableItems.map(item => `
+                    <button class="p-3 bg-slate-700 hover:bg-slate-600 rounded-lg text-left transition" data-item-id="${item.id}">
+                        <p class="font-bold text-lg">${item.icon} ${item.name}</p>
+                    </button>
+                `).join('') : 
+                `<p class="text-center text-slate-400 col-span-full">모든 물품이 선택되었습니다.</p>`;
+            
             openModal(dom.itemSelectionModalEl);
-        };
-
-        const finishIndividualRanking = () => {
-            showScreen('transition-screen');
         };
 
         const generateReport = () => {
             dom.finalGroupName.textContent = appData.state.groupName;
             dom.finalStudentName.textContent = appData.state.studentName;
             dom.finalStudentNumber.textContent = appData.state.studentNumber;
-            dom.finalRole.textContent = appData.roles[appData.state.selectedRole].name;
+            dom.finalRole.textContent = (appData.state.selectedRole && appData.roles[appData.state.selectedRole]?.name) || '미정';
             
             const calculateScoreAndRenderList = (type) => {
                 const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
                 const listEl = type === 'individual' ? dom.individualFinalList : dom.groupFinalList;
                 const summaryEl = type === 'individual' ? dom.individualScoreSummary : dom.groupScoreSummary;
                 
-                listEl.innerHTML = '';
                 let totalScore = 0;
-                
-                rankedItems.forEach((itemData, index) => {
+                listEl.innerHTML = rankedItems.map((itemData, index) => {
+                    if (!itemData) return '';
                     const item = appData.items.find(i => i.id === itemData.id);
                     const userRank = index + 1;
-                    const nasaRank = item.nasaRank;
-                    totalScore += Math.abs(userRank - nasaRank);
-
-                    const reportItem = document.createElement('div');
-                    reportItem.className = 'p-2 bg-slate-900 rounded-md text-sm';
-                    reportItem.innerHTML = `
-                        <p class="font-bold">${userRank}위. ${item.icon} ${item.name}</p>
-                        <p class="text-slate-400 mt-1 pl-3">이유: ${itemData.reason || '작성하지 않음'}</p>
+                    totalScore += Math.abs(userRank - item.nasaRank);
+                    return `
+                        <div class="p-2 bg-slate-900 rounded-md text-sm">
+                            <p class="font-bold">${userRank}위. ${item.icon} ${item.name}</p>
+                            <p class="text-sm text-slate-400 mt-1 pl-3 keep-all">이유: ${itemData.reason || '작성하지 않음'}</p>
+                        </div>
                     `;
-                    listEl.appendChild(reportItem);
-                });
+                }).join('');
 
-                let evaluation = '', eng_eval = '';
-                if (totalScore <= 25) { evaluation = 'NASA에서 연락옵니다. 당신은 외계인인가요?'; eng_eval = 'Excellent';}
-                else if (totalScore <= 32) { evaluation = '달 부동산 투자 추천! 당신은 이미 달 전문가입니다.'; eng_eval = 'Good';}
-                else if (totalScore <= 45) { evaluation = '아슬아슬... 지구에 갈 수 있겠죠?'; eng_eval = 'Average';}
-                else if (totalScore <= 55) { evaluation = '지구에 있는 가족... 생각나시나요?'; eng_eval = 'Fair';}
-                else if (totalScore <= 70) { evaluation = '혹시 하고 싶은 말이 있나요?'; eng_eval = 'Danger';}
-                else { evaluation = '그동안 함께해서 행복했어요.'; eng_eval = 'U dead';}
+                let evaluation = '';
+                if (totalScore <= 25) { evaluation = 'NASA에서 연락옵니다. 당신은 외계인인가요?'; }
+                else if (totalScore <= 32) { evaluation = '달 부동산 투자 추천! 당신은 이미 달 전문가입니다.'; }
+                else if (totalScore <= 45) { evaluation = '아슬아슬... 지구에 갈 수 있겠죠?'; }
+                else if (totalScore <= 55) { evaluation = '지구에 있는 가족... 생각나시나요?'; }
+                else if (totalScore <= 70) { evaluation = '혹시 하고 싶은 말이 있나요?'; }
+                else { evaluation = '그동안 함께해서 행복했어요.'; }
                 
                 summaryEl.innerHTML = `
                     <p class="text-lg font-bold">총점: <span class="text-red-400">${totalScore}점</span></p>
@@ -673,82 +748,89 @@
 
             calculateScoreAndRenderList('individual');
             calculateScoreAndRenderList('group');
-            
             showScreen('report-screen');
         };
-        
+
         const openKnowledgeModal = () => {
             if (!appData.state.selectedRole) return;
             const role = appData.roles[appData.state.selectedRole];
-            dom.knowledgeModalBodyEl.innerHTML = '';
-
-            const mainTitle = document.createElement('h3');
-            mainTitle.className = "text-2xl font-bold mb-4 text-center";
-            mainTitle.textContent = "정보 다시보기";
-            dom.knowledgeModalBodyEl.appendChild(mainTitle);
-            
-            const scrollContainer = document.createElement('div');
-            scrollContainer.className = "max-h-[60vh] overflow-y-auto p-2 space-y-4";
-            
-            const roleSection = document.createElement('div');
-            const roleTitle = document.createElement('h4');
-            roleTitle.className = "text-lg font-bold text-orange-300 mb-2";
-            roleTitle.textContent = `🚀 [${role.name}] 전문 지식`;
-            roleSection.appendChild(roleTitle);
-
-            const roleList = document.createElement('ul');
-            roleList.className = "list-disc list-inside space-y-1 text-slate-300";
-            role.knowledge.forEach(fact => {
-                const li = document.createElement('li');
-                li.textContent = fact.text;
-                roleList.appendChild(li);
-            });
-            roleSection.appendChild(roleList);
-            scrollContainer.appendChild(roleSection);
-
-            const separator = document.createElement('hr');
-            separator.className = "border-slate-600 my-4";
-            scrollContainer.appendChild(separator);
-
-            const itemSection = document.createElement('div');
-            const itemTitle = document.createElement('h4');
-            itemTitle.className = "text-lg font-bold text-cyan-300 mb-2";
-            itemTitle.textContent = "🎒 물품 정보";
-            itemSection.appendChild(itemTitle);
-            const itemListContainer = document.createElement('div');
-            itemListContainer.className = "space-y-3";
-            appData.items.forEach(item => {
-                const itemInfoEl = document.createElement('div');
-                itemInfoEl.className = "bg-slate-900 p-3 rounded";
-                itemInfoEl.innerHTML = `<p class="font-bold">${item.icon} ${item.name}</p><p class="text-sm text-slate-400 mt-1">${item.description}</p>`;
-                itemListContainer.appendChild(itemInfoEl);
-            });
-            itemSection.appendChild(itemListContainer);
-            scrollContainer.appendChild(itemSection);
-            
-            dom.knowledgeModalBodyEl.appendChild(scrollContainer);
+            dom.knowledgeModalBodyEl.innerHTML = `
+                <h3 class="text-2xl font-bold mb-4 text-center">정보 다시보기</h3>
+                <div class="max-h-[60vh] overflow-y-auto p-2 space-y-4">
+                    <div>
+                        <h4 class="text-lg font-bold text-orange-300 mb-2">🚀 [${role.name}] 전문 지식</h4>
+                        <ul class="list-disc list-inside space-y-1 text-slate-300">
+                            ${role.knowledge.map(fact => `<li class="keep-all">${fact.text}</li>`).join('')}
+                        </ul>
+                    </div>
+                    <hr class="border-slate-600 my-4">
+                    <div>
+                        <h4 class="text-lg font-bold text-cyan-300 mb-2">🎒 물품 정보</h4>
+                        <div class="space-y-3">
+                            ${appData.items.map(item => `
+                                <div class="bg-slate-900 p-3 rounded">
+                                    <p class="font-bold">${item.icon} ${item.name}</p>
+                                    <p class="text-sm text-slate-400 mt-1 keep-all">${item.description}</p>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                </div>
+            `;
             openModal(dom.knowledgeModalEl);
         };
         
+        const restoreSession = () => {
+            try {
+                const savedStateJSON = localStorage.getItem(SAVE_KEY);
+                if (!savedStateJSON) return false;
+                
+                const savedState = JSON.parse(savedStateJSON);
+                 if (savedState.version !== APP_VERSION) {
+                    localStorage.removeItem(SAVE_KEY);
+                    return false;
+                }
+
+                appData.state = savedState;
+                dom.groupNameInput.value = appData.state.groupName || '';
+                dom.studentNumberInput.value = appData.state.studentNumber || '';
+                dom.studentNameInput.value = appData.state.studentName || '';
+
+                const screenToRestore = appData.state.currentScreen;
+                showScreen(screenToRestore);
+
+                if (screenToRestore === 'main-screen') renderRankingSlots('individual');
+                if (screenToRestore === 'group-ranking-screen') renderRankingSlots('group');
+                if (screenToRestore === 'report-screen') generateReport();
+
+                return true;
+            } catch (e) {
+                localStorage.removeItem(SAVE_KEY);
+                return false;
+            }
+        };
+
         const generateReportCanvas = () => {
             const reportContent = document.getElementById('report-content');
             
-            // Temporarily disable overflow for full capture
             const individualList = document.getElementById('individual-final-list');
             const groupList = document.getElementById('group-final-list');
             const oldIndividualHeight = individualList.style.maxHeight;
             const oldGroupHeight = groupList.style.maxHeight;
             individualList.style.maxHeight = 'none';
             groupList.style.maxHeight = 'none';
+            individualList.style.overflow = 'visible';
+            groupList.style.overflow = 'visible';
 
             return new Promise((resolve) => {
                 html2canvas(reportContent, { 
-                    backgroundColor: "#172a46",
+                    backgroundColor: "#0a192f",
                     onclone: (doc) => { doc.getElementById('report-content').style.color = '#e6f1ff'; }
                 }).then(canvas => {
-                    // Restore original styles
                     individualList.style.maxHeight = oldIndividualHeight;
                     groupList.style.maxHeight = oldGroupHeight;
+                    individualList.style.overflow = 'auto';
+                    groupList.style.overflow = 'auto';
                     resolve(canvas);
                 });
             });
@@ -792,55 +874,87 @@
             }
         };
 
-        const restart = () => { localStorage.removeItem(SAVE_KEY); window.location.reload(); };
+        const handleBodyClick = (event) => {
+            const target = event.target;
+            const roleCard = target.closest('.role-card');
+            const emptySlot = target.closest('.rank-slot.empty');
+            const infoButton = target.closest('[data-info-id]');
+            const clearButton = target.closest('[data-clear-slot]');
+            const itemSelectionButton = target.closest('#item-selection-modal-body button');
+            const modalClose = target.closest('.close-modal-btn') || (target.classList.contains('modal-base') && !target.querySelector('.modal-content')) || target.closest('.modal-ok-btn') || target.closest('.modal-cancel-btn');
 
-        const saveState = () => {
-            try {
-                if (appData.state.currentScreen === 'intro-screen' || appData.state.currentScreen === 'emergency-screen') return;
+            const actions = {
+                'start-class-btn': () => {
+                    if (localStorage.getItem(SAVE_KEY)) {
+                        showConfirm(
+                            '저장된 진행 상황을 이어서 하시겠습니까?',
+                            () => { // onConfirm -> Continue
+                                if (!restoreSession()) {
+                                    showAlert("이어할 데이터를 불러오지 못했습니다. 새로 시작합니다.", "오류");
+                                    restartApp();
+                                }
+                            },
+                            '진행 상황 발견',
+                            { 
+                                onCancel: () => { // onCancel -> Start New
+                                    appData.state = getNewState();
+                                    showScreen('setup-screen');
+                                },
+                                okText: '이어하기',
+                                cancelText: '새로 시작',
+                                okClass: 'bg-green-600 hover:bg-green-700',
+                                cancelClass: 'bg-red-600 hover:bg-red-700'
+                            }
+                        );
+                    } else {
+                        appData.state = getNewState();
+                        showScreen('setup-screen');
+                    }
+                },
+                'start-mission-btn': startMission,
+                'skip-emergency-btn': () => { skipEmergencySequence(); stopMusicAndClear(); },
+                'proceed-to-roles-btn': () => { stopMusicAndClear(); showScreen('role-screen'); },
+                'go-to-ranking-btn': () => { showScreen('main-screen'); renderRankingSlots('individual'); },
+                'finish-individual-button': () => { showScreen('group-ranking-screen'); renderRankingSlots('group'); },
+                'finish-group-button': generateReport,
+                'open-knowledge-modal-btn': openKnowledgeModal,
+                'open-knowledge-modal-btn-group': openKnowledgeModal,
+                'back-to-start-btn': () => showConfirm('지금까지의 진행 상황이 모두 사라집니다. 정말 처음으로 돌아가시겠습니까?', restartApp, '처음으로 돌아가기', { okText: '확인', cancelText: '취소' }),
+                'exit-app-btn': () => showConfirm('정말 종료하시겠습니까? 진행 상황은 저장됩니다.', () => window.close(), '종료', { okText: '종료', cancelText: '취소' }),
+                'restart-btn': () => showConfirm('정말 모든 진행 상황을 삭제하고 다시 시작하시겠습니까?', restartApp, '다시 시작하기', { okText: '다시 시작', cancelText: '취소' }),
+                'open-save-share-modal-btn': () => openModal(dom.saveShareModalEl),
+                'save-image-btn': () => { closeModal(dom.saveShareModalEl); downloadReport(); },
+                'share-image-btn': () => { closeModal(dom.saveShareModalEl); shareReport(); },
+            };
 
-                const saveReasons = (type) => {
-                    const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
-                    const listEl = type === 'individual' ? dom.rankListEl : dom.groupRankListEl;
-                    const reasonAttribute = type === 'individual' ? 'data-reason-for-item' : 'data-reason-for-group-item';
-
-                    rankedItems.forEach((itemData, index) => {
-                        if (itemData) {
-                            const textarea = listEl.querySelector(`textarea[${reasonAttribute}="${itemData.id}"]`);
-                            if (textarea) rankedItems[index].reason = textarea.value;
-                        }
-                    });
-                };
-                
-                if(appData.state.currentScreen === 'main-screen') saveReasons('individual');
-                if(appData.state.currentScreen === 'group-ranking-screen') saveReasons('group');
-
-                localStorage.setItem(SAVE_KEY, JSON.stringify({ ...appData.state, version: 'team-1.0' }));
-            } catch (e) { console.error("저장 중 오류:", e); }
-        };
-        const autoSave = () => saveState();
-
-        const restoreSession = () => {
-            try {
-                const savedStateJSON = localStorage.getItem(SAVE_KEY);
-                if (!savedStateJSON) return false;
-                const savedState = JSON.parse(savedStateJSON);
-
-                appData.state = savedState;
-                dom.groupNameInput.value = appData.state.groupName || '';
-                dom.studentNumberInput.value = appData.state.studentNumber || '';
-                dom.studentNameInput.value = appData.state.studentName || '';
-
-                const screenToRestore = appData.state.currentScreen === 'emergency-screen' ? 'role-screen' : appData.state.currentScreen;
-                showScreen(screenToRestore || 'intro-screen');
-
-                if (screenToRestore === 'main-screen') renderRankingSlots('individual');
-                if (screenToRestore === 'group-ranking-screen') renderRankingSlots('group');
-                if (screenToRestore === 'report-screen') generateReport();
-
-                return true;
-            } catch (e) {
-                localStorage.removeItem(SAVE_KEY);
-                return false;
+            if (actions[target.id]) {
+                actions[target.id]();
+            } else if (roleCard) {
+                selectRole(roleCard.dataset.role);
+            } else if (emptySlot) {
+                openItemSelectionModal(parseInt(emptySlot.dataset.slotIndex, 10), emptySlot.dataset.rankType);
+            } else if (infoButton) {
+                const item = appData.items.find(i => i.id == infoButton.dataset.infoId);
+                if (item) {
+                    dom.itemInfoModalBodyEl.innerHTML = `<h3 class="text-2xl font-bold mb-4">${item.icon} ${item.name}</h3><p class="keep-all">${item.description || '정보 없음'}</p>`;
+                    openModal(dom.itemInfoModalEl);
+                }
+            } else if (clearButton) {
+                const slotIndex = parseInt(clearButton.dataset.clearSlot, 10);
+                const type = clearButton.dataset.clearType;
+                const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
+                rankedItems[slotIndex] = null;
+                renderRankingSlots(type);
+                autoSave();
+            } else if (itemSelectionButton) {
+                const { type, slotIndex } = activeSelectionContext;
+                const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
+                rankedItems[slotIndex] = { id: parseInt(itemSelectionButton.dataset.itemId, 10), reason: '' };
+                closeModal(dom.itemSelectionModalEl);
+                renderRankingSlots(type);
+                autoSave();
+            } else if (modalClose) {
+                closeModal(target.closest('.modal-base'));
             }
         };
         
@@ -852,78 +966,32 @@
                 dom.studentNumberInput.appendChild(opt);
             }
 
-            document.body.addEventListener('click', (event) => {
-                const target = event.target;
-                const roleCard = target.closest('.role-card');
-                const emptySlot = target.closest('.rank-slot.empty');
-                const infoButton = target.closest('[data-info-id]');
-                const clearButton = target.closest('[data-clear-slot]');
-
-                if (target.id === 'start-mission-btn') startMission();
-                else if (target.id === 'skip-emergency-btn') skipEmergencySequence();
-                else if (target.id === 'proceed-to-roles-btn') showScreen('role-screen');
-                else if (roleCard) selectRole(roleCard.dataset.role);
-                else if (target.id === 'go-to-ranking-btn') { showScreen('main-screen'); renderRankingSlots('individual'); }
-                else if (target.id === 'finish-individual-button') finishIndividualRanking();
-                else if (target.id === 'go-to-group-ranking-btn') { showScreen('group-ranking-screen'); renderRankingSlots('group'); }
-                else if (target.id === 'finish-group-button') generateReport();
-                else if (target.id === 'open-knowledge-modal-btn' || target.id === 'open-knowledge-modal-btn-group') openKnowledgeModal();
-                else if (target.id === 'back-to-start-btn') showConfirm('지금까지의 진행 상황이 모두 사라집니다. 정말 처음으로 돌아가시겠습니까?', restart, '처음으로 돌아가기');
-                else if (target.id === 'exit-app-btn') showConfirm('정말 종료하시겠습니까? 진행 상황은 저장됩니다.', () => { window.close(); }, '종료');
-                else if (target.id === 'restart-btn') showConfirm('정말 모든 진행 상황을 삭제하고 다시 시작하시겠습니까?', restart, '다시 시작하기');
-                else if (target.id === 'open-save-share-modal-btn') openModal(dom.saveShareModalEl);
-                else if (target.id === 'save-image-btn') { closeModal(dom.saveShareModalEl); downloadReport(); }
-                else if (target.id === 'share-image-btn') { closeModal(dom.saveShareModalEl); shareReport(); }
-                else if (target.closest('.close-modal-btn') || (target.classList.contains('modal-base') && !target.querySelector('.modal-content'))) closeModal(target.closest('.modal-base'));
-                else if(target.closest('.modal-ok-btn') || target.closest('.modal-cancel-btn')) closeModal(target.closest('.modal-base'));
-                else if (emptySlot) openItemSelectionModal(parseInt(emptySlot.dataset.slotIndex, 10), emptySlot.dataset.rankType);
-                else if (infoButton) {
-                    const item = appData.items.find(i => i.id == infoButton.dataset.infoId);
-                    if (item) {
-                        dom.itemInfoModalBodyEl.innerHTML = `<h3 class="text-2xl font-bold mb-4">${item.icon} ${item.name}</h3><p>${item.description || '정보 없음'}</p>`;
-                        openModal(dom.itemInfoModalEl);
-                    }
-                } else if (clearButton) {
-                    const slotIndex = parseInt(clearButton.dataset.clearSlot, 10);
-                    const type = clearButton.dataset.clearType;
-                    const rankedItems = type === 'individual' ? appData.state.rankedItems : appData.state.groupRankedItems;
-                    rankedItems[slotIndex] = null;
-                    renderRankingSlots(type);
-                    autoSave();
-                }
-            });
-
+            dom.fullscreenBtn.addEventListener('click', toggleFullScreen);
+            document.addEventListener('fullscreenchange', updateFullscreenIcons);
+            document.body.addEventListener('click', handleBodyClick);
+            
             ['groupNameInput', 'studentNameInput', 'studentNumberInput'].forEach(id => {
-                dom[id].addEventListener('input', () => { appData.state[id.replace('Input','')] = dom[id].value; autoSave(); });
+                dom[id].addEventListener('input', () => { appData.state[id.replace('Input','')] = dom[id].value; });
             });
             dom.rankListEl.addEventListener('input', (e) => { if(e.target.matches('textarea')) autoSave(); });
             dom.groupRankListEl.addEventListener('input', (e) => { if(e.target.matches('textarea')) autoSave(); });
-
-            new Sortable(dom.rankListEl, {
-                animation: 150, handle: '.drag-handle',
-                onEnd: (evt) => {
-                    const itemData = appData.state.rankedItems.splice(evt.oldIndex, 1)[0];
-                    appData.state.rankedItems.splice(evt.newIndex, 0, itemData);
-                    renderRankingSlots('individual');
-                    autoSave();
-                }
-            });
-            new Sortable(dom.groupRankListEl, {
-                animation: 150, handle: '.drag-handle',
-                onEnd: (evt) => {
-                    const itemData = appData.state.groupRankedItems.splice(evt.oldIndex, 1)[0];
-                    appData.state.groupRankedItems.splice(evt.newIndex, 0, itemData);
-                    renderRankingSlots('group');
-                    autoSave();
-                }
-            });
             
-            if(!restoreSession()) {
-                resetState();
-            }
+            new Sortable(dom.rankListEl, { animation: 150, handle: '.drag-handle', onEnd: (evt) => {
+                const itemData = appData.state.rankedItems.splice(evt.oldIndex, 1)[0];
+                appData.state.rankedItems.splice(evt.newIndex, 0, itemData);
+                renderRankingSlots('individual');
+                autoSave();
+            }});
+            new Sortable(dom.groupRankListEl, { animation: 150, handle: '.drag-handle', onEnd: (evt) => {
+                const itemData = appData.state.groupRankedItems.splice(evt.oldIndex, 1)[0];
+                appData.state.groupRankedItems.splice(evt.newIndex, 0, itemData);
+                renderRankingSlots('group');
+                autoSave();
+            }});
             
-            showScreen(appData.state.currentScreen || 'intro-screen');
-
+            appData.state = getNewState();
+            showScreen('welcome-screen');
+            updateFullscreenIcons();
             setInterval(saveState, 30000);
             window.addEventListener('beforeunload', saveState);
             document.addEventListener('visibilitychange', () => { if (document.hidden) saveState(); });
