@@ -105,18 +105,14 @@
         .rank-slot.empty:hover {
             background-color: #334155; /* slate-700 */
         }
-        /* 단어 잘림 방지 스타일 */
-        .keep-all {
-            word-break: keep-all;
-        }
     </style>
 </head>
 <body class="p-2 sm:p-4">
 
     <!-- Fullscreen Button -->
     <button id="fullscreen-btn" class="fixed top-4 right-4 z-50 p-2 bg-slate-700/50 hover:bg-slate-600/70 rounded-full text-white transition">
-        <svg id="fs-enter-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-6-6m6 6v-4.8m0 4.8h-4.8"/><path d="M3 16.2V21m0 0h4.8M3 21l6-6"/><path d="M21 7.8V3m0 0h-4.8M21 3l-6 6"/><path d="M3 7.8V3m0 0h4.8M3 3l6 6"/></svg>
-        <svg id="fs-exit-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="m15 15 6 6m-6-6v4.8m0-4.8h4.8"/><path d="M9 16.2V21m0 0H4.2M9 21l-6-6"/><path d="M15 7.8V3m0 0h4.8M15 3l6 6"/><path d="M9 7.8V3m0 0H4.2M9 3l-6 6"/></svg>
+        <svg id="fs-enter-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 19.5L9 15m0 0H4.5m4.5 0V19.5"/><path d="M19.5 4.5L15 9m0 0h4.5M15 9V4.5"/><path d="M19.5 19.5L15 15m0 0h4.5m-4.5 0V19.5"/><path d="M4.5 4.5L9 9m0 0H4.5M9 9V4.5"/></svg>
+        <svg id="fs-exit-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden"><path d="M9 15l-6 6m6-6v4.5m0-4.5H4.5"/><path d="M15 9l6-6m-6 6V4.5m0 4.5h4.5"/><path d="M15 15l6 6m-6-6v4.5m0-4.5h4.5"/><path d="M9 9l-6-6m6 6V4.5m0-4.5H4.5"/></svg>
     </button>
 
     <div id="app-wrapper">
@@ -125,28 +121,28 @@
             <!-- Screen 0: Welcome Screen -->
             <div id="welcome-screen" class="screen active-screen text-center">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">달에서 길을 잃다</h1>
-                <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-3xl mx-auto keep-all">
+                <p class="text-lg sm:text-xl text-slate-300 mb-8 max-w-3xl mx-auto break-keep">
                     달에서 살아남기 위한 모둠 협동 학습에 오신 것을 환영합니다.
                 </p>
 
                 <div class="max-w-3xl mx-auto text-left bg-slate-800/50 p-6 rounded-lg mb-8 space-y-6">
                     <div>
                         <h2 class="text-2xl font-bold text-cyan-300 mb-3">수업 목표</h2>
-                        <p class="keep-all text-slate-300">
+                        <p class="break-keep text-slate-300">
                             주어진 정보(전문 지식)를 바탕으로 합리적인 의사 결정을 내리는 과정을 체험하고, 모둠원과의 토의를 통해 최선의 결과를 도출하는 협업 능력을 기릅니다.
                         </p>
                     </div>
                     <div>
                         <h2 class="text-2xl font-bold text-cyan-300 mb-3">수업 활동 안내</h2>
                         <div class="space-y-3 text-slate-300">
-                            <p class="keep-all"><b>[활동 1] 개인별 의견 마련:</b> 모둠과 이름을 입력하고 전문 분야를 선택합니다. 각자 얻은 전문 지식을 바탕으로 생존에 필요한 물품 순위를 정합니다.</p>
-                            <p class="keep-all"><b>[활동 2] 모둠별 의견 조율:</b> 모둠원들과 각자의 순위와 근거를 공유하며 토의합니다. 토의를 통해 우리 모둠의 최종 순위를 결정합니다.</p>
-                            <p class="keep-all"><b>[결과 확인]</b> 개인 순위와 모둠 순위를 NASA 전문가의 답과 비교하며, 더 나은 의사결정 과정을 되돌아봅니다.</p>
+                            <p class="break-keep"><b>[활동 1] 개인별 의견 마련:</b> 모둠과 이름을 입력하고 전문 분야를 선택합니다. 각자 얻은 전문 지식을 바탕으로 생존에 필요한 물품 순위를 정합니다.</p>
+                            <p class="break-keep"><b>[활동 2] 모둠별 의견 조율:</b> 모둠원들과 각자의 순위와 근거를 공유하며 토의합니다. 토의를 통해 우리 모둠의 최종 순위를 결정합니다.</p>
+                            <p class="break-keep"><b>[결과 확인]</b> 개인 순위와 모둠 순위를 NASA 전문가의 답과 비교하며, 더 나은 의사결정 과정을 되돌아봅니다.</p>
                         </div>
                     </div>
                     <div>
                         <h3 class="text-xl font-bold text-yellow-300 mb-2">꼭 읽어주세요!</h3>
-                        <p class="text-slate-400 keep-all">모둠원은 각자 다른 전문 분야를 선택해야 협동의 효과가 커집니다. 자신의 의견만 고집하기보다, 다른 모둠원의 전문 지식을 존중하고 경청하며 합리적인 결정을 내려보세요.</p>
+                        <p class="text-slate-400 break-keep">모둠원은 각자 다른 전문 분야를 선택해야 협동의 효과가 커집니다. 자신의 의견만 고집하기보다, 다른 모둠원의 전문 지식을 존중하고 경청하며 합리적인 결정을 내려보세요.</p>
                     </div>
                 </div>
 
@@ -157,7 +153,7 @@
                 <div class="mt-8 border-t border-slate-700 pt-6">
                      <p class="text-slate-400 mb-2">※ 이 활동은 모둠 수업용입니다.</p>
                     <a href="https://moon-survival.pages.dev/" target="_blank" rel="noopener noreferrer" class="text-sky-400 hover:text-sky-300 underline">
-                        개인 활동 버전으로 체험하기
+                         개인 활동 버전으로 체험하기
                     </a>
                 </div>
             </div>
@@ -165,9 +161,9 @@
             <!-- Screen 1: Setup Screen -->
             <div id="setup-screen" class="screen text-center">
                 <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">모둠 정보 입력</h1>
-                 <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto keep-all">
-                    모둠과 당신의 정보를 입력해주세요.
-                </p>
+                 <p class="text-base sm:text-lg md:text-xl text-slate-300 mb-8 max-w-3xl mx-auto break-keep">
+                     모둠과 당신의 정보를 입력해주세요.
+                 </p>
                 <div class="max-w-sm mx-auto mb-8 space-y-4">
                     <div>
                         <label for="groupNameInput" class="block mb-2 text-sm font-medium text-slate-300">모둠 이름을 입력하세요</label>
@@ -192,27 +188,27 @@
             <!-- Screen 2: Role Selection -->
             <div id="role-screen" class="screen">
                 <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">당신의 전문 분야를 선택하세요</h2>
-                <p class="text-center text-slate-300 mb-8 keep-all">선택한 역할에 따라 특별한 전문 지식을 얻게 됩니다.</p>
+                <p class="text-center text-slate-300 mb-8 break-keep">선택한 역할에 따라 특별한 전문 지식을 얻게 됩니다.</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
                     <div data-role="scientist" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🔬</div>
                         <h3 class="text-xl sm:text-2xl font-bold">우주과학자</h3>
-                        <p class="text-slate-400 text-sm sm:text-base keep-all">달의 환경과 물리 법칙에 대해 깊이 이해하고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base break-keep">달의 환경과 물리 법칙에 대해 깊이 이해하고 있습니다.</p>
                     </div>
                     <div data-role="explorer" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🧭</div>
                         <h3 class="text-xl sm:text-2xl font-bold">탐험가</h3>
-                        <p class="text-slate-400 text-sm sm:text-base keep-all">험난한 지형을 돌파하고 길을 찾는 데 능숙합니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base break-keep">험난한 지형을 돌파하고 길을 찾는 데 능숙합니다.</p>
                     </div>
                     <div data-role="communicator" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">📡</div>
                         <h3 class="text-xl sm:text-2xl font-bold">통신전문가</h3>
-                        <p class="text-slate-400 text-sm sm:text-base keep-all">장비를 활용해 구조 신호를 보내는 방법을 알고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base break-keep">장비를 활용해 구조 신호를 보내는 방법을 알고 있습니다.</p>
                     </div>
                     <div data-role="medic" class="role-card bg-slate-700 p-4 sm:p-6 rounded-lg text-center cursor-pointer hover:bg-slate-600 hover:scale-105 transition-all">
                         <div class="text-5xl sm:text-6xl mb-4">🩺</div>
                         <h3 class="text-xl sm:text-2xl font-bold">의료진</h3>
-                        <p class="text-slate-400 text-sm sm:text-base keep-all">극한 상황에서 생명을 유지하는 방법을 알고 있습니다.</p>
+                        <p class="text-slate-400 text-sm sm:text-base break-keep">극한 상황에서 생명을 유지하는 방법을 알고 있습니다.</p>
                     </div>
                 </div>
             </div>
@@ -225,7 +221,7 @@
                     <!-- Knowledge items will be injected here by JS -->
                 </div>
                 <div class="text-center mt-8">
-                    <button id="go-to-ranking-btn" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                    <button id="go-to-ranking-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
                         내 순위 정하기
                     </button>
                 </div>
@@ -235,7 +231,7 @@
             <div id="main-screen" class="screen">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <h2 class="text-2xl sm:text-3xl font-bold text-center flex-grow">[개인] 생존 물품 우선순위 정하기</h2>
-                    <button id="open-knowledge-modal-btn" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm flex-shrink-0 w-full sm:w-auto">
+                    <button id="open-knowledge-modal-btn" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm flex-shrink-0">
                         내 전문지식 보기 🧠
                     </button>
                 </div>
@@ -243,25 +239,72 @@
                    <!-- Ranking slots will be generated here -->
                 </div>
                  <div class="text-center mt-8">
-                      <button id="finish-individual-button" class="bg-green-600 hover:bg-green-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
+                      <button id="finish-individual-button" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
                           개인 순위 제출하기 <span id="finish-individual-button-counter">(0/15)</span>
                       </button>
                  </div>
+            </div>
+
+            <!-- Screen 4.5: Discussion Guide -->
+            <div id="discussion-guide-screen" class="screen">
+                <div class="text-center">
+                    <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8">🚀 성공적인 토의를 위한 자세</h2>
+                    <div class="max-w-3xl mx-auto text-left bg-slate-800/50 p-6 sm:p-8 rounded-2xl mb-10 space-y-5">
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl pt-1">👂</span>
+                            <div>
+                                <h3 class="font-bold text-cyan-300 text-xl">경청하기</h3>
+                                <p class="text-slate-300 break-keep">다른 모둠원의 의견을 끝까지 듣고 존중해주세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl pt-1">💡</span>
+                            <div>
+                                <h3 class="font-bold text-cyan-300 text-xl">근거 제시하기</h3>
+                                <p class="text-slate-300 break-keep">자신의 주장을 내세울 때는 '왜냐하면'을 붙여 이유를 명확히 설명해주세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl pt-1">💬</span>
+                            <div>
+                                <h3 class="font-bold text-cyan-300 text-xl">자신있게 의견 말하기</h3>
+                                <p class="text-slate-300 break-keep">조용히 듣기만 하는 것보다, 자신의 의견을 근거와 함께 자신있게 이야기하는 것도 중요해요.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl pt-1">🤔</span>
+                            <div>
+                                <h3 class="font-bold text-cyan-300 text-xl">합리적 비판하기</h3>
+                                <p class="text-slate-300 break-keep">의견이 다를 때는 감정적으로 비난하지 말고, 타당한 근거를 들어 설득해보세요.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <span class="text-2xl pt-1">🤝</span>
+                            <div>
+                                <h3 class="font-bold text-cyan-300 text-xl">최선의 답 찾기</h3>
+                                <p class="text-slate-300 break-keep">우리 모둠의 생존을 위해 가장 좋은 방법을 함께 찾아보세요!</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="go-to-group-ranking-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                        모둠 토의 시작하기
+                    </button>
+                </div>
             </div>
             
             <!-- Screen 5: Group Ranking Activity -->
             <div id="group-ranking-screen" class="screen">
                 <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
                     <h2 class="text-2xl sm:text-3xl font-bold text-center flex-grow">[모둠] 생존 물품 우선순위 정하기</h2>
-                     <button id="open-knowledge-modal-btn-group" class="bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm flex-shrink-0 w-full sm:w-auto">
-                        내 전문지식 보기 🧠
-                    </button>
+                     <button id="open-knowledge-modal-btn-group" class="w-full sm:w-auto bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded-lg text-sm flex-shrink-0">
+                         내 전문지식 보기 🧠
+                     </button>
                 </div>
                 <div id="group-rank-list" class="w-full bg-slate-800 p-4 rounded-lg min-h-[60vh] space-y-3 max-h-[65vh] overflow-y-auto">
-                   <!-- Group ranking slots will be generated here -->
+                    <!-- Group ranking slots will be generated here -->
                 </div>
                  <div class="text-center mt-8">
-                      <button id="finish-group-button" class="bg-green-600 hover:bg-green-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
+                      <button id="finish-group-button" class="w-full sm:w-auto bg-green-600 hover:bg-green-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105 disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>
                           최종 보고서 만들기 <span id="finish-group-button-counter">(0/15)</span>
                       </button>
                  </div>
@@ -271,12 +314,21 @@
             <div id="report-screen" class="screen">
                 <div id="report-content" class="p-2">
                     <h2 class="text-2xl sm:text-3xl font-bold text-center mb-4">달 생존 보고서</h2>
-                    <p class="text-center text-slate-300 mb-6">
-                        모둠: <span id="final-group-name" class="font-bold text-cyan-400"></span> / 
-                        <span id="final-student-number" class="font-bold text-cyan-400"></span>번 
-                        <span id="final-student-name" class="font-bold text-cyan-400"></span> / 
-                        전문 분야: <span id="final-role" class="font-bold text-orange-400"></span>
-                    </p>
+                    <div class="flex flex-wrap items-center justify-center gap-x-4 gap-y-1 text-center text-slate-300 mb-6">
+                        <div class="flex items-center gap-x-1.5">
+                            <span class="font-semibold text-slate-400">모둠:</span>
+                            <span id="final-group-name" class="font-bold text-cyan-400"></span>
+                        </div>
+                        <div class="flex items-center gap-x-1.5">
+                            <span class="font-semibold text-slate-400">이름:</span>
+                            <span id="final-student-number" class="font-bold text-cyan-400"></span>번
+                            <span id="final-student-name" class="font-bold text-cyan-400"></span>
+                        </div>
+                        <div class="flex items-center gap-x-1.5">
+                            <span class="font-semibold text-slate-400">전문 분야:</span>
+                            <span id="final-role" class="font-bold text-orange-400"></span>
+                        </div>
+                    </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                         <!-- Individual Report -->
@@ -293,17 +345,17 @@
                         </div>
                     </div>
                 </div>
-                 <div class="text-center mt-6 space-y-2 sm:space-y-0 sm:space-x-4">
-                    <button id="open-save-share-modal-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
-                        결과 저장하기
-                    </button>
-                     <a href="https://pinkylucky.tistory.com/2" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition">
-                        NASA 전문가 해설
-                    </a>
-                     <button id="restart-btn" class="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
-                        다시하기
-                    </button>
-                </div>
+                 <div class="text-center mt-6 flex flex-col sm:flex-row sm:justify-center gap-2 sm:gap-4">
+                     <button id="open-save-share-modal-btn" class="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                         결과 저장하기
+                     </button>
+                      <a href="https://pinkylucky.tistory.com/2" target="_blank" rel="noopener noreferrer" class="inline-block w-full sm:w-auto bg-teal-600 hover:bg-teal-700 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition">
+                         NASA 전문가 해설
+                      </a>
+                      <button id="restart-btn" class="w-full sm:w-auto bg-gray-500 hover:bg-gray-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                         다시하기
+                      </button>
+                 </div>
             </div>
         </div>
     </div>
@@ -597,7 +649,7 @@
                     return;
                 }
                 const p = document.createElement('p');
-                p.className = 'keep-all';
+                p.className = 'break-keep';
                 const rawMessage = appData.emergencyMessages[messageIndex];
                 const studentName = appData.state.studentName || '대원';
                 const groupName = appData.state.groupName || '모둠';
@@ -621,7 +673,7 @@
             const studentName = appData.state.studentName || '대원';
             const groupName = appData.state.groupName || '모둠';
             dom.emergencyMessageContainer.innerHTML = appData.emergencyMessages
-                .map(msg => `<p style="animation: none; opacity: 1;" class="keep-all">${msg.replace('{name}', studentName).replace('{groupName}', groupName)}</p>`).join('');
+                .map(msg => `<p style="animation: none; opacity: 1;" class="break-keep">${msg.replace('{name}', studentName).replace('{groupName}', groupName)}</p>`).join('');
             dom.skipEmergencyBtn.classList.add('hidden');
             dom.proceedToRolesBtn.classList.remove('hidden');
         };
@@ -632,13 +684,13 @@
             dom.roleTitle.innerText = `[${role.name}]`;
             dom.knowledgeList.innerHTML = `
                 <h4 class="text-lg font-bold text-orange-300 md:col-span-2">🚀 전문 지식</h4>
-                ${role.knowledge.map(fact => `<div class="bg-slate-700 p-3 rounded keep-all">- ${fact.text}</div>`).join('')}
+                ${role.knowledge.map(fact => `<div class="bg-slate-700 p-3 rounded break-keep">- ${fact.text}</div>`).join('')}
                 <hr class="border-slate-600 my-2 md:col-span-2">
                 <h4 class="text-lg font-bold text-cyan-300 md:col-span-2">🎒 물품 정보</h4>
                 ${appData.items.map(item => `
                     <div class="bg-slate-700 p-3 rounded">
                         <p class="font-bold">${item.icon} ${item.name}</p>
-                        <p class="text-sm text-slate-400 mt-1 keep-all">${item.description}</p>
+                        <p class="text-sm text-slate-400 mt-1 break-keep">${item.description}</p>
                     </div>
                 `).join('')}
             `;
@@ -727,7 +779,7 @@
                     return `
                         <div class="p-2 bg-slate-900 rounded-md text-sm">
                             <p class="font-bold">${userRank}위. ${item.icon} ${item.name}</p>
-                            <p class="text-sm text-slate-400 mt-1 pl-3 keep-all">이유: ${itemData.reason || '작성하지 않음'}</p>
+                            <p class="text-sm text-slate-400 mt-1 pl-3 break-keep">이유: ${itemData.reason || '작성하지 않음'}</p>
                         </div>
                     `;
                 }).join('');
@@ -760,7 +812,7 @@
                     <div>
                         <h4 class="text-lg font-bold text-orange-300 mb-2">🚀 [${role.name}] 전문 지식</h4>
                         <ul class="list-disc list-inside space-y-1 text-slate-300">
-                            ${role.knowledge.map(fact => `<li class="keep-all">${fact.text}</li>`).join('')}
+                            ${role.knowledge.map(fact => `<li class="break-keep">${fact.text}</li>`).join('')}
                         </ul>
                     </div>
                     <hr class="border-slate-600 my-4">
@@ -770,7 +822,7 @@
                             ${appData.items.map(item => `
                                 <div class="bg-slate-900 p-3 rounded">
                                     <p class="font-bold">${item.icon} ${item.name}</p>
-                                    <p class="text-sm text-slate-400 mt-1 keep-all">${item.description}</p>
+                                    <p class="text-sm text-slate-400 mt-1 break-keep">${item.description}</p>
                                 </div>
                             `).join('')}
                         </div>
@@ -787,9 +839,9 @@
                 
                 const savedState = JSON.parse(savedStateJSON);
                  if (savedState.version !== APP_VERSION) {
-                    localStorage.removeItem(SAVE_KEY);
-                    return false;
-                }
+                     localStorage.removeItem(SAVE_KEY);
+                     return false;
+                 }
 
                 appData.state = savedState;
                 dom.groupNameInput.value = appData.state.groupName || '';
@@ -915,8 +967,9 @@
                 'skip-emergency-btn': () => { skipEmergencySequence(); stopMusicAndClear(); },
                 'proceed-to-roles-btn': () => { stopMusicAndClear(); showScreen('role-screen'); },
                 'go-to-ranking-btn': () => { showScreen('main-screen'); renderRankingSlots('individual'); },
-                'finish-individual-button': () => { showScreen('group-ranking-screen'); renderRankingSlots('group'); },
-                'finish-group-button': generateReport,
+                'finish-individual-button': () => { autoSave(); showScreen('discussion-guide-screen'); },
+                'go-to-group-ranking-btn': () => { showScreen('group-ranking-screen'); renderRankingSlots('group'); },
+                'finish-group-button': () => { autoSave(); generateReport(); },
                 'open-knowledge-modal-btn': openKnowledgeModal,
                 'open-knowledge-modal-btn-group': openKnowledgeModal,
                 'back-to-start-btn': () => showConfirm('지금까지의 진행 상황이 모두 사라집니다. 정말 처음으로 돌아가시겠습니까?', restartApp, '처음으로 돌아가기', { okText: '확인', cancelText: '취소' }),
@@ -936,7 +989,7 @@
             } else if (infoButton) {
                 const item = appData.items.find(i => i.id == infoButton.dataset.infoId);
                 if (item) {
-                    dom.itemInfoModalBodyEl.innerHTML = `<h3 class="text-2xl font-bold mb-4">${item.icon} ${item.name}</h3><p class="keep-all">${item.description || '정보 없음'}</p>`;
+                    dom.itemInfoModalBodyEl.innerHTML = `<h3 class="text-2xl font-bold mb-4">${item.icon} ${item.name}</h3><p class="break-keep">${item.description || '정보 없음'}</p>`;
                     openModal(dom.itemInfoModalEl);
                 }
             } else if (clearButton) {
