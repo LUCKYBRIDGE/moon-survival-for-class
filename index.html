@@ -185,6 +185,33 @@
                 </button>
             </div>
             
+            <!-- NEW Screen 1.8: Activity Guide -->
+            <div id="activity-guide-screen" class="screen text-center">
+                <h2 class="text-3xl sm:text-4xl font-bold text-white mb-8">활동 안내</h2>
+                <div class="max-w-3xl mx-auto text-left bg-slate-800/50 p-6 sm:p-8 rounded-2xl mb-10 space-y-8">
+                    <div>
+                        <h3 class="font-bold text-cyan-300 text-2xl mb-3">💯 점수 계산 방법</h3>
+                        <p class="text-slate-300 break-keep leading-relaxed">
+                            최종 점수는 NASA 전문가가 정한 순위와 여러분이 정한 순위의 차이를 모두 합산하여 계산됩니다.<br>
+                            (예: NASA 1위, 내 순위 3위 → 2점 / NASA 8위, 내 순위 2위 → 6점) (총 점수: 2+6 = 8점)<br>
+                            <span class="font-bold text-yellow-300">점수가 낮을수록 생존 확률이 높습니다!</span>
+                        </p>
+                    </div>
+                    <hr class="border-slate-600">
+                    <div>
+                        <h3 class="font-bold text-cyan-300 text-2xl mb-3">✍️ 이유 작성 안내</h3>
+                        <p class="text-slate-300 break-keep leading-relaxed">
+                            각 물품의 순위를 정한 '이유'를 작성하는 것은 여러분의 논리적인 사고 과정을 보여주는 중요한 부분입니다.<br>
+                            이 활동은 수업의 일환으로 진행되므로, <b class="text-yellow-300">자신이 왜 그렇게 생각했는지 이유를 반드시 작성해주세요.</b><br>
+                            <span class="font-bold text-slate-100">작성한 이유는 나중에 모둠원들을 설득하는 데 아주 중요한 근거가 됩니다.</span>
+                        </p>
+                    </div>
+                </div>
+                <button id="go-to-role-selection-btn" class="w-full sm:w-auto bg-orange-500 hover:bg-orange-600 text-white font-bold text-lg sm:text-xl py-3 px-8 rounded-lg transition-transform transform hover:scale-105">
+                    전문 분야 선택하기
+                </button>
+            </div>
+
             <!-- Screen 2: Role Selection -->
             <div id="role-screen" class="screen">
                 <h2 class="text-2xl sm:text-3xl font-bold text-center mb-6">당신의 전문 분야를 선택하세요</h2>
@@ -367,7 +394,7 @@
         </div>
         <button id="skip-emergency-btn" class="absolute top-5 right-5 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-lg z-10">SKIP</button>
         <button id="proceed-to-roles-btn" class="mt-8 bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 px-6 rounded-lg hidden transition-opacity animate-pulse">
-            전문 분야 선택하기
+            활동 안내 보기
         </button>
     </div>
 
@@ -854,6 +881,8 @@
                 if (screenToRestore === 'main-screen') renderRankingSlots('individual');
                 if (screenToRestore === 'group-ranking-screen') renderRankingSlots('group');
                 if (screenToRestore === 'report-screen') generateReport();
+                // Add this line to handle the new screen
+                if (screenToRestore === 'activity-guide-screen') showScreen('activity-guide-screen');
 
                 return true;
             } catch (e) {
@@ -965,7 +994,8 @@
                 },
                 'start-mission-btn': startMission,
                 'skip-emergency-btn': () => { skipEmergencySequence(); stopMusicAndClear(); },
-                'proceed-to-roles-btn': () => { stopMusicAndClear(); showScreen('role-screen'); },
+                'proceed-to-roles-btn': () => { stopMusicAndClear(); showScreen('activity-guide-screen'); },
+                'go-to-role-selection-btn': () => showScreen('role-screen'),
                 'go-to-ranking-btn': () => { showScreen('main-screen'); renderRankingSlots('individual'); },
                 'finish-individual-button': () => { autoSave(); showScreen('discussion-guide-screen'); },
                 'go-to-group-ranking-btn': () => { showScreen('group-ranking-screen'); renderRankingSlots('group'); },
